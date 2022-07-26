@@ -30,3 +30,29 @@ def home_page():
     users = User.query.all()
 
     return render_template('home.html', users=users)
+
+@app.route('/', methods=["POST"])
+def add_user():
+    """Shows home page"""
+
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    url = request.form['profile_picture']
+
+    user = User(first_name=first_name, last_name=last_name, image_url=url)
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(f"/{user.id}")
+
+@app.route("/<int:user_id>")
+def show_user(user_id):
+    """Show info on user"""
+
+    user = User.query.get_or_404(user_id)
+    return render_template("user.html", user=user)
+
+@app.route('/add')
+def add_user_form():
+    """Shows add user form"""
+    return render_template('add_user.html')
