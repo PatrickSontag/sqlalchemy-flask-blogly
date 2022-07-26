@@ -5,7 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User 
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = "SECRET!"
@@ -19,4 +19,9 @@ db.create_all()
 @app.route('/')
 def home_page():
     """Shows home page"""
-    return render_template('home.html')
+
+    users = db.session.execute("SELECT * FROM users")
+    users_list = list(users)
+    print(users_list)
+
+    return render_template('home.html', users_list=users_list)
