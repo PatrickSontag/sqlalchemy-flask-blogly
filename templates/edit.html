@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogly - User{% endblock %}
+
+{% block content %}
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<!-- <h2>{{ user.image_url }}</h2>- -->
+<img src="{{ user.image_url }}">
+
+<form action="/update/{{ user.id }}" method="POST">
+    <p>First Name: <input name="first_name" value="{{ user.first_name }}"></p>
+    <p>Last Name: <input name="last_name" value="{{ user.last_name }}"></p>
+    <p>Profile Picture URL: <input name="profile_picture" value="{{ user.image_url }}"></p>
+    <button>Save</button>
+</form>
+
+<form>
+    <button formaction="/user/{{ user.id }}">Cancel</button>
+</form>
+
+{% endblock %}

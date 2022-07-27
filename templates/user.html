@@ -4,10 +4,12 @@
 
 {% block content %}
 <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-<h2>{{ user.image_url }}</h2>
+<!-- <h2>{{ user.image_url }}</h2>- -->
 <img src="{{ user.image_url }}">
 
-<form action="/">
-    <button>Users List</button>
+<form>
+    <button formaction="/">Users List</button>
+    <button formaction="/edit/{{ user.id }}">Edit</button>
 </form>
+
 {% endblock %}
