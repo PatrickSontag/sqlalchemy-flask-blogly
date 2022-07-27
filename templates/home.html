@@ -5,11 +5,14 @@
 {% block content %}
 <h1>Users</h1>
 
-<ul>
+<div class="users-container">
     {% for user in users %}
-    <li><a href="/user/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a></li>
+    <div class="home-container">
+        <img class="home-img" src="{{ user.image_url }}">
+        <a class="home-name" href="/user/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
+    </div>
     {% endfor %}
-</ul>
+</div>
 <form action="/add">
     <button action="/add">Add New User</button>
 </form>

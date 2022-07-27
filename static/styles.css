@@ -1,5 +1,35 @@
-img {
+.profile-img {
     height: 200px;
+}
+
+.home-container {
+    height: 50px;
+    width: 400px;
+    position: relative;
+    left: 10%;
+}
+
+.home-img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.home-name {
+    font-family: sans-serif;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 60px;
+}
+
+.users-container {
+    padding-bottom: 20px;
 }
 
 button.delete {
@@ -13,8 +43,9 @@ button {
 
 li, h1, form {
     font-family: sans-serif;
+    color: rgb(133, 132, 132);
 }
 
 body {
-    background-color: rgb(189, 170, 211);
+    background-color: rgb(255, 255, 255);
 }
