@@ -19,12 +19,19 @@ connect_db(app)
 # db.create_all()
 # Creates all tables from python Models file.  Should not need to create tables very often.  Can call from terminal or ipython rather than hard-coding.
 
+
+def handle_user_image(user, default_image='https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg'):
+    if not user.image_url:
+        user.image_url = default_image
+    return user
+
 @app.route('/')
 def home_page():
     """Shows home page"""
 
-    users = User.query.all()
-
+    users = []
+    for user in User.query.all():
+        users.append(handle_user_image(user))
     return render_template('home.html', users=users)
 
 @app.route('/', methods=["POST"])
@@ -46,6 +53,7 @@ def show_user(user_id):
     """Show info on user"""
 
     user = User.query.get_or_404(user_id)
+    user = handle_user_image(user)
     return render_template("user.html", user=user)
 
 @app.route('/add')

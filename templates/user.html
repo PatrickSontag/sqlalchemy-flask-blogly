@@ -6,11 +6,9 @@
 <h1>{{ user.first_name }} {{ user.last_name }}</h1>
 <!-- <h2>{{ user.image_url }}</h2>- -->
 <img class="profile-img" src="{{ user.image_url }}">
-
+<!-- or 'https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg' -->
 <form>
     <button formaction="/edit/{{ user.id }}">Edit</button>
-</form><br>
-<form>
     <button formaction="/">Users</button>
 </form>
 

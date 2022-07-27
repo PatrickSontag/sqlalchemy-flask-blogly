@@ -3,16 +3,17 @@
 }
 
 .home-container {
-    height: 50px;
+    height: 60px;
     width: 400px;
     position: relative;
-    left: 10%;
+    /* left: 10%; */
 }
 
 .home-img {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
+    border-radius: 10px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -21,11 +22,12 @@
 .home-name {
     font-family: sans-serif;
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 60px;
+    left: 70px;
+    text-decoration: none;
 }
 
 .users-container {
@@ -37,15 +39,22 @@ button.delete {
 }
 
 button {
-    background-color: rgb(190, 190, 190);
-    border-radius: 6px;
+    background-color: rgb(128, 161, 253);
+    border-radius: 4px;
+    border: none;
+    padding: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-block;
+    color: white;
 }
 
 li, h1, form {
     font-family: sans-serif;
-    color: rgb(133, 132, 132);
+    color: rgb(84, 86, 116);
 }
 
 body {
     background-color: rgb(255, 255, 255);
+    margin-left: 10%;
 }

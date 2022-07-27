@@ -5,19 +5,21 @@
 {% block content %}
 <h1>{{ user.first_name }} {{ user.last_name }}</h1>
 <!-- <h2>{{ user.image_url }}</h2>- -->
-<img src="{{ user.image_url }}">
+<img src="{{ user.image_url }}" class="profile-img">
 
-<form action="/update/{{ user.id }}" method="POST">
+<form id="update-form" action="/update/{{ user.id }}" method="POST">
     <p>First Name: <input name="first_name" value="{{ user.first_name }}"></p>
     <p>Last Name: <input name="last_name" value="{{ user.last_name }}"></p>
-    <p>Profile Picture URL: <input name="profile_picture" value="{{ user.image_url }}"></p>
-    <button>Save</button>
-</form><br>
+    <p>Profile Picture URL: <input name="profile_picture"  value="{{ user.image_url }}"></p>
+</form>
+
+<form id="delete-form" action="/delete/{{ user.id }}" method="POST">
+</form>
 
 <form>
+    <button type="submit" form="update-form">Save</button>
     <button formaction="/user/{{ user.id }}">Cancel</button>
-    <br><br>
-    <button class="delete" formaction="/delete/{{ user.id }}" method="POST">Delete</button>
+    <button type="submit" form="delete-form" class="delete">Delete</button>
 </form>
 
 {% endblock %}
