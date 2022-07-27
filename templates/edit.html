@@ -12,10 +12,12 @@
     <p>Last Name: <input name="last_name" value="{{ user.last_name }}"></p>
     <p>Profile Picture URL: <input name="profile_picture" value="{{ user.image_url }}"></p>
     <button>Save</button>
-</form>
+</form><br>
 
 <form>
     <button formaction="/user/{{ user.id }}">Cancel</button>
+    <br><br>
+    <button class="delete" formaction="/delete/{{ user.id }}" method="POST">Delete</button>
 </form>
 
 {% endblock %}

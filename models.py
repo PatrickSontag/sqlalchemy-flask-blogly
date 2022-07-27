@@ -28,8 +28,8 @@ class User(db.Model):
                     nullable=False,
                     unique=True)
     image_url = db.Column(db.String(),
-                    nullable=True,
+                    nullable=False,
                     unique=False,
-                    default="/user_profile_pics/default_user_profile.jpg")
+                    default="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg")
 
     

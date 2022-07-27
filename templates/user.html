@@ -8,8 +8,10 @@
 <img src="{{ user.image_url }}">
 
 <form>
-    <button formaction="/">Users List</button>
     <button formaction="/edit/{{ user.id }}">Edit</button>
+</form><br>
+<form>
+    <button formaction="/">Users</button>
 </form>
 
 {% endblock %}
