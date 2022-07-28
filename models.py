@@ -17,7 +17,7 @@ class User(db.Model):
     __tablename__ = "users"
 
     def __repr__(self):
-        return f"<User id={self.id}, first name={self.first_name}, last name={self.last_name}, image={self.image_url}>"
+        return f"<User id={self.id}, first name={self.first_name}, last name={self.last_name}, image={self.image}>"
 
     id = db.Column(db.Integer,
                     primary_key=True,
@@ -28,30 +28,30 @@ class User(db.Model):
     last_name = db.Column(db.String(30),
                     nullable=False,
                     unique=True)
-    image_url = db.Column(db.String(),
+    image = db.Column(db.String(),
                     nullable=False,
                     unique=False)
 
-class Post(db.Model):
-    """Post"""
+# class Post(db.Model):
+#     """Post"""
 
-    __tablename__ = "posts"
+#     __tablename__ = "posts"
 
-    # def __repr__(self):
-    #     return f<
+#     # def __repr__(self):
+#         # return f<
 
-    id = db.Column(db.Integer,
-                primary_key=True,
-                autoincrement=True)
-    title = db.Column(db.String(50),
-                nullable=False,
-                unique=False)
-    content = db.Column(db.String(500),
-                nullable=False,
-                unique=False)
-    created_at = db.Column(db.DateTime,
-                nullable=False,
-                default=datetime.datetime.now)
-    user_id = db.Column(db.Integer, 
-                db.ForeignKey('users.id'),
-                nullable=False)
+#     id = db.Column(db.Integer,
+#                 primary_key=True,
+#                 autoincrement=True)
+#     title = db.Column(db.String(50),
+#                 nullable=False,
+#                 unique=False)
+#     content = db.Column(db.String(500),
+#                 nullable=False,
+#                 unique=False)
+#     created_at = db.Column(db.DateTime,
+#                 nullable=False,
+#                 default=datetime.datetime.now)
+#     user_id = db.Column(db.Integer, 
+#                 db.ForeignKey('users.id'),
+#                 nullable=False)

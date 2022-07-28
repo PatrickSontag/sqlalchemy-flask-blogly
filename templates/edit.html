@@ -4,12 +4,12 @@
 
 {% block content %}
 <div class="user-name">{{ user.first_name }} {{ user.last_name }}</div>
-<img src="{{ user.image_url }}" class="profile-img">
+<img src="{{ user.image }}" class="profile-img">
 
 <form id="update-form" action="/update/{{ user.id }}" method="POST">
     <p>First Name: <input name="first_name" value="{{ user.first_name }}"></p>
     <p>Last Name: <input name="last_name" value="{{ user.last_name }}"></p>
-    <p>Profile Picture URL: <input name="profile_picture"  value="{{ user.image_url }}"></p>
+    <p>Profile Picture URL: <input name="profile_picture"  value="{{ user.image }}"></p>
 </form>
 
 <form id="delete-form" action="/delete/{{ user.id }}" method="POST">

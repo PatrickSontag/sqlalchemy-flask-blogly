@@ -21,8 +21,8 @@ connect_db(app)
 
 
 def handle_user_image(user, default_image='https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg'):
-    if not user.image_url:
-        user.image_url = default_image
+    if not user.image:
+        user.image = default_image
     return user
 
 @app.route('/')
@@ -40,9 +40,9 @@ def add_user():
 
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    url = request.form['profile_picture']
+    image = request.form['profile_picture']
 
-    user = User(first_name=first_name, last_name=last_name, image_url=url)
+    user = User(first_name=first_name, last_name=last_name, image=image)
     db.session.add(user)
     db.session.commit()
 
@@ -54,6 +54,9 @@ def show_user(user_id):
 
     user = User.query.get_or_404(user_id)
     user = handle_user_image(user)
+
+    # posts = Post.query.filter_by(user.id=user_id)
+
     return render_template("user.html", user=user)
 
 @app.route('/add')
@@ -74,12 +77,12 @@ def update_user(user_id):
 
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    url = request.form['profile_picture']
+    image = request.form['profile_picture']
 
     user = User.query.get(user_id)
     user.first_name = first_name
     user.last_name = last_name
-    user.image_url = url
+    user.image = image
 
     db.session.add(user)
     db.session.commit()

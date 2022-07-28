@@ -3,17 +3,17 @@
 {% block title %}Blogly{% endblock %}
 
 {% block content %}
-<h1>Users</h1>
+<div class="header-1 t-clr-2">Users</div>
 
 <div class="users-container">
     {% for user in users %}
     <div class="home-container">
-        <img class="home-img" src="{{ user.image_url }}">
-        <a class="home-name" href="/user/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
+        <img class="home-img" src="{{ user.image }}">
+        <a class="home-name t-clr-1" href="/user/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
     </div>
     {% endfor %}
 </div>
 <form action="/add">
-    <button action="/add">Add</button>
+    <button action="/add" class="b-clr-2">Add</button>
 </form>
 {% endblock %}
