@@ -54,6 +54,7 @@ def show_user(user_id):
 
     user = User.query.get_or_404(user_id)
     user = handle_user_image(user)
+    posts = user.posts
 
     # posts = Post.query.filter_by(user.id=user_id)
 
@@ -91,10 +92,32 @@ def update_user(user_id):
 
 @app.route('/delete/<int:user_id>', methods=["POST"])
 def delete_user(user_id):
-    """Update user info"""
+    """Delete user"""
 
     User.query.filter_by(id=user_id).delete()
 
     db.session.commit()
 
     return redirect('/')
+
+@app.route('/user/<int:user_id>/new_post')
+def new_post_form(user_id):
+    """Shows new post form"""
+    user = User.query.get(user_id)
+    # return render_template('/new_post')
+    return render_template('new_post.html', user=user)
+
+@app.route('/user/<int:user_id>/new_post', methods=["POST"])
+def new_post(user_id):
+    """Add new post"""
+    
+    title = request.form['title']
+    content = request.form['content']
+    
+    user = User.query.get(user_id)
+    post = Post(title=title, content=content, user_id=user_id)
+
+    db.session.add(post)
+    db.session.commit()
+
+    return redirect(f"/user/{user.id}")

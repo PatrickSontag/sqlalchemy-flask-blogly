@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogly - New Post{% endblock %}
+
+{% block content %}
+<img src="{{ user.image }}" class="profile-img">
+<div class="user-name">{{ user.first_name }} {{ user.last_name }}</div>
+<br>
+<div class="header-2 t-clr-2">New Post</div>
+<br>
+<form id="new-post-form" action="/user/{{ user.id }}/new_post" method="POST">
+    <p>Title: <input name="title" value=""></p>
+    <p>Content: <input name="content" value=""></p>
+</form>
+
+<form>
+    <button type="submit" form="new-post-form">Post</button>
+    <button formaction="/user/{{ user.id }}">Cancel</button>
+</form>
+
+{% endblock %}
