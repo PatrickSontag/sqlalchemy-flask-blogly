@@ -32,3 +32,7 @@ VALUES
     ('Greetings', 'Chocolate covered starfish.', '2022-07-28', 1),
     ('My first post', 'I coach football.', '2022-07-28', 2),
     ('Hello', 'All the eggs and bacon.', '2022-07-28', 3);
+
+SELECT * FROM users
+    JOIN posts
+    ON users.id = posts.user_id;

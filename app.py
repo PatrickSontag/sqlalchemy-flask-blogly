@@ -2,7 +2,7 @@
 
 from flask import Flask, request, redirect, render_template
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User 
+from models import db, connect_db, User, Post
 
 app = Flask(__name__)
 
@@ -57,7 +57,7 @@ def show_user(user_id):
 
     # posts = Post.query.filter_by(user.id=user_id)
 
-    return render_template("user.html", user=user)
+    return render_template("user.html", user=user, posts=posts)
 
 @app.route('/add')
 def add_user_form():
