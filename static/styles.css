@@ -126,6 +126,19 @@ button {
     color: white;
 }
 
+.post-container {
+    position: relative;
+}
+
+#post-delete-btn {
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    position: absolute;
+    left: 300px;
+    top: 10px;
+}
+
 h1 {
     font-family: sans-serif;
     color: rgb(84, 86, 116);

@@ -8,14 +8,10 @@
 <div class="header-1 t-clr-2">{{ user.first_name }} {{ user.last_name }}</div>
 <form class="user-buttons">
     <button class="b-clr-2" formaction="/edit/{{ user.id }}">Edit</button>
-    <button type="submit" form="delete-form" class="delete">Delete</button>
+    <button class="delete" formaction="/delete/{{ user.id }}" formmethod="post">Delete</button>
 </form>
 <br>
 <div class="header-2 t-clr-2">Posts</div>
-<br>
-<form id="add-post-form" action="/user/{{ user.id }}/new_post">
-    <button class="b-clr-2">Add Post</button>
-</form>
 <br>
 <div class="user-posts">
     {% for post in posts %}
@@ -23,8 +19,15 @@
         <div class="post-title t-clr-1">{{ post.title }}</div>
         <div class="post-date t-clr-2">{{ post.created_at }}</div>
         <div class="post-content t-clr-1">{{ post.content }}</div> 
+        <form action>
+            <button id="post-delete-btn" class="delete" formaction="/delete/post/{{ post.id }}" formmethod="post">X</button>
+        </form>
     </div>
+    <br>
     {% endfor %}
 </div>
-
+<br>
+<form id="add-post-form" action="/user/{{ user.id }}/new_post">
+    <button class="b-clr-2">Add Post</button>
+</form>
 {% endblock %}
