@@ -3,21 +3,21 @@
 {% block title %}Blogly - User{% endblock %}
 
 {% block content %}
-<div class="user-name">{{ user.first_name }} {{ user.last_name }}</div>
+<div class="user-name header-1 t-clr-2">{{ user.first_name }} {{ user.last_name }}</div>
 <img src="{{ user.image }}" class="profile-img">
-
+<br><br>
 <form id="update-form" action="/update/{{ user.id }}" method="POST">
-    <p>First Name: <input name="first_name" value="{{ user.first_name }}"></p>
-    <p>Last Name: <input name="last_name" value="{{ user.last_name }}"></p>
-    <p>Profile Picture URL: <input name="profile_picture"  value="{{ user.image }}"></p>
+    <p class="form-text t-clr-2">First Name: <input name="first_name" value="{{ user.first_name }}"></p>
+    <p class="form-text t-clr-2">Last Name: <input name="last_name" value="{{ user.last_name }}"></p>
+    <p class="form-text t-clr-2">Profile Picture: <input name="profile_picture" value="{{ user.image }}" placeholder="URL"></p>
 </form>
 
 <form id="delete-form" action="/delete/{{ user.id }}" method="POST">
 </form>
 
 <form>
-    <button type="submit" form="update-form">Save</button>
-    <button formaction="/user/{{ user.id }}">Cancel</button>
+    <button type="submit" form="update-form" class="b-clr-2">Save</button>
+    <button formaction="/user/{{ user.id }}" class="b-clr-2">Cancel</button>
 </form>
 
 {% endblock %}
