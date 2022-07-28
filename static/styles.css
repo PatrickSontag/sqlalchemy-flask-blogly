@@ -1,5 +1,11 @@
 .profile-img {
     height: 200px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+
+.user-buttons {
+    margin-top: 20px;
 }
 
 .home-container {
@@ -13,7 +19,7 @@
     height: 50px;
     width: 50px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -34,6 +40,54 @@
     padding-bottom: 20px;
 }
 
+.user-name {
+    font-family: sans-serif;
+    color: rgb(84, 86, 116);
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    /* padding-bottom: 20px; */
+}
+
+.home-name {
+    font-family: sans-serif;
+    color: rgb(84, 86, 116);
+    font-weight: bold;
+}
+
+.header-post {
+    font-family: sans-serif;
+    color: rgb(84, 86, 116);
+    font-size: 18px;
+    font-weight: bold; 
+    margin-top: 20px;
+}
+
+.navbar {
+    background-color: rgb(120, 104, 92);
+    height: 50px;
+    position: relative;
+}
+
+.nav-link {
+    /* float: left; */
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding-left: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+body {
+    margin: 0;
+    /* padding: 0; */
+}
+
 button.delete {
     background-color: rgb(255, 80, 80);
 }
@@ -49,12 +103,12 @@ button {
     color: white;
 }
 
-li, h1, form {
+h1 {
     font-family: sans-serif;
     color: rgb(84, 86, 116);
 }
 
-body {
+main {
     background-color: rgb(255, 255, 255);
     margin-left: 10%;
 }

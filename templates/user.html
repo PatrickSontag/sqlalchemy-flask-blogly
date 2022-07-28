@@ -3,13 +3,14 @@
 {% block title %}Blogly - User{% endblock %}
 
 {% block content %}
-<h1>{{ user.first_name }} {{ user.last_name }}</h1>
-<!-- <h2>{{ user.image_url }}</h2>- -->
+<div class="user-name">{{ user.first_name }} {{ user.last_name }}</div>
+<form class="user-buttons">
+    <button formaction="/edit/{{ user.id }}">Edit</button>
+    <button type="submit" form="delete-form" class="delete">Delete</button>
+</form>
 <img class="profile-img" src="{{ user.image_url }}">
 <!-- or 'https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg' -->
-<form>
-    <button formaction="/edit/{{ user.id }}">Edit</button>
-    <button formaction="/">Users</button>
-</form>
+
+<div class="header-post">Posts</div>
 
 {% endblock %}

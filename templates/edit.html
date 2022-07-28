@@ -3,8 +3,7 @@
 {% block title %}Blogly - User{% endblock %}
 
 {% block content %}
-<h1>{{ user.first_name }} {{ user.last_name }}</h1>
-<!-- <h2>{{ user.image_url }}</h2>- -->
+<div class="user-name">{{ user.first_name }} {{ user.last_name }}</div>
 <img src="{{ user.image_url }}" class="profile-img">
 
 <form id="update-form" action="/update/{{ user.id }}" method="POST">
@@ -19,7 +18,6 @@
 <form>
     <button type="submit" form="update-form">Save</button>
     <button formaction="/user/{{ user.id }}">Cancel</button>
-    <button type="submit" form="delete-form" class="delete">Delete</button>
 </form>
 
 {% endblock %}
