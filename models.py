@@ -64,7 +64,7 @@ class Post(db.Model):
 class Tag(db.Model):
     """Tag in a post"""
 
-    __tablename__ = "tags"y
+    __tablename__ = "tags"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False, unique=True)
