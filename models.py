@@ -59,3 +59,33 @@ class Post(db.Model):
                 nullable=False)
 
     user = db.relationship('User')
+    # could also use "backref" to create two-way connection between Models
+
+class Tag(db.Model):
+    """Tag in a post"""
+
+    __tablename__ = "tags"y
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False, unique=True)
+
+class PostTag(db.Model):
+    """Post and Tag jointable"""
+
+    __tablename__ = "post_tag"
+
+    posts_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+
+
+#   ---------FUNCTIONS----------------  
+
+def user_posts_join_class():
+    """Show employees with a join.
+    """
+
+    posts = (db.session.query(Post, User)
+            .join(User).all())
+
+    for post, user in posts:  # [(<P>, <U>), (<P>, <U>)]
+        print(user.first_name, user.last_name, ":", post.title, "-", post.content)
