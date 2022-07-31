@@ -164,6 +164,9 @@ button {
 .tag-input {
     margin-left: 0px;
 }
+.tag-container {
+    display: inline;
+}
 
 h1 {
     font-family: sans-serif;

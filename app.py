@@ -111,8 +111,9 @@ def delete_user(user_id):
 def new_post_form(user_id):
     """Shows new post form"""
     user = User.query.get(user_id)
-    # return render_template('/new_post')
-    return render_template('new_post.html', user=user)
+    tags = Tag.query.all()
+
+    return render_template('new_post.html', user=user, tags=tags)
 
 @app.route('/user/<int:user_id>/new_post', methods=["POST"])
 def new_post(user_id):
@@ -120,10 +121,15 @@ def new_post(user_id):
     
     title = request.form['title']
     content = request.form['content']
-    
-    user = User.query.get(user_id)
-    post = Post(title=title, content=content, user_id=user_id)
+    # tags = request.form.getlist('tags')
+    tag_ids = [int(num) for num in request.form.getlist("tags")]
+    tags = Tag.query.filter(Tag.id.in_(tag_ids)).all()
 
+
+    print("1111111111111111- new post, tags: ", tags, "| tag_ids:, ", tag_ids)
+    user = User.query.get(user_id)
+    post = Post(title=title, content=content, user_id=user_id, tags=tags)
+    
     db.session.add(post)
     db.session.commit()
 

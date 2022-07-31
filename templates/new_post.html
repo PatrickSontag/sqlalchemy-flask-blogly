@@ -9,23 +9,24 @@
 <div class="header-2 t-clr-1">New Post</div>
 <br>
 <form id="new-post-form" action="/user/{{ user.id }}/new_post" method="POST">
-    <p class="form-text t-clr-2">Title: <input name="title" value=""></p>
-    <p class="form-text t-clr-2">Content: <input class="post-input" name="content" value=""></p>
-    <p class="form-text t-clr-1">Tags:
-        <label class="tag-label t-clr-2" for="tag1">Work</label>
-        <input class="tag-input" type="checkbox" name="tag1">
-        <label class="tag-label t-clr-2" for="tag2">Travel</label>
-        <input class="tag-input" type="checkbox" name="tag2"Travel>
-        <label class="tag-label t-clr-2" for="tag3">Fun</label>
-        <input class="tag-input" type="checkbox" name="tag3"Fun>
-        <label class="tag-label t-clr-2" for="tag4">Music</label>
-        <input class="tag-input" type="checkbox" name="tag4"Music>
-    </p>
+    <div class="form-text t-clr-2">Title: <input name="title" value=""></div>
+    <br>
+    <div class="form-text t-clr-2">Content: <input class="post-input" name="content" value=""></div>
+    <br>
+    <div class="form-text t-clr-1">Tags:
+        {% for tag in tags %}
+        <div class="tag-container">
+            <label class="tag-label t-clr-2" for="tag{{ tag.id }}">{{ tag.name }}</label>
+            <input class="tag-input" type="checkbox" name="tags" id="tag{{ tag.id }}" value="{{ tag.id }}">
+        </div>
+        {% endfor %}
+    </div>
 </form>
-
+<br>
 <form>
     <button class="b-clr-2"type="submit" form="new-post-form">Post</button>
     <button class="b-clr-2"formaction="/user/{{ user.id }}">Cancel</button>
 </form>
+
 
 {% endblock %}
