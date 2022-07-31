@@ -19,6 +19,11 @@
         <div class="post-title t-clr-1">{{ post.title }}</div>
         <div class="post-date t-clr-2">{{ post.created_at }}</div>
         <div class="post-content t-clr-1">{{ post.content }}</div> 
+        <div class="tags-container">
+            {% for tag in post.ts %}
+            <span class="tag t-clr-2">#{{ tag.name }}</span>
+            {% endfor %}
+        </div>
         <form action>
             <button id="post-delete-btn" class="delete" formaction="/delete/post/{{ post.id }}" formmethod="post">X</button>
         </form>
@@ -27,13 +32,9 @@
     {% endfor %}
 </div>
 <br>
-<div>
-    {% for t in tags %}
-        {{ t }}
-    {% endfor %}
-    
-</div>
+
 <form id="add-post-form" action="/user/{{ user.id }}/new_post">
     <button class="b-clr-2">Add Post</button>
 </form>
+
 {% endblock %}
