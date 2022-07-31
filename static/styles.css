@@ -158,6 +158,13 @@ button {
     /* display: inline; */
 }
 
+.tag-label {
+    padding-left: 8px;
+}
+.tag-input {
+    margin-left: 0px;
+}
+
 h1 {
     font-family: sans-serif;
     color: rgb(84, 86, 116);
