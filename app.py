@@ -53,12 +53,19 @@ def show_user(user_id):
     """Show info on user"""
 
     user = User.query.get_or_404(user_id)
-    user = handle_user_image(user)
     posts = user.posts
-
+    print("POSTS:::::::", posts)
+    tags = []
+    for i, p in enumerate(posts):
+        tags.append(posts[i].ts)
+    # tags = user.tags
+    # tags = posts.tags
+    # print("TAGS::::::::", tags)
     # posts = Post.query.filter_by(user.id=user_id)
+    user = handle_user_image(user)
 
-    return render_template("user.html", user=user, posts=posts)
+    return render_template("user.html", user=user, posts=posts, tags=tags)
+    # tags=tags
 
 @app.route('/add')
 def add_user_form():

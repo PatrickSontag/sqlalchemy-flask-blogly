@@ -8,12 +8,12 @@ db.drop_all()
 db.create_all()
 
 # Add data to tables
-fred = User(first_name="Fred", last_name="Durst", image="https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2018/09/640/320/vet_durst.jpg?ve=1&tl=1")
-dan = User(first_name="Dan", last_name="Quinn", image="https://s.yimg.com/ny/api/res/1.2/JrZxu4tI2fzxTjLqz6WMog--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://s.yimg.com/os/creatr-uploaded-images/2021-12/9123d7e0-69c2-11ec-9b3f-d3605ec744e4")
+nate = User(first_name="Nate", last_name="Nickerson", image="https://www.looper.com/img/gallery/the-office-star-you-forgot-appeared-on-better-call-saul/nate-from-the-office-recurs-as-pryce-in-better-call-saul-1640030469.jpg")
+charles = User(first_name="Charles", last_name="Boyle", image="https://writingwinters.com/wp-content/uploads/boyle.jpg")
 ron = User(first_name="Ron", last_name="Swanson", image="https://pbs.twimg.com/profile_images/1262480275/ron-swanson-250fp011911_400x400.jpg")
 
-p1 = Post(title="Greetings", content="Chocolate covered starfish.", created_at="2022-07-28", user_id="1")
-p2 = Post(title="My first post", content="I coach football.", created_at="82022-07-28", user_id="2")
+p1 = Post(title="Ryan vs Ravi", content="I've never met Ravi personally, but I'm gonna go ahead and say just having known you a short while, Brian, that I prefer Ravi.  And again, I've never even met the guy.", created_at="2022-07-28", user_id="1")
+p2 = Post(title="Influence", content="I've never been a bad influence on anyone.", created_at="2022-07-28", user_id="2")
 p3 = Post(title="Hello", content="All the eggs and bacon.", created_at="2022-07-28", user_id="3")
 
 t1 = Tag(name="Work")
@@ -28,8 +28,8 @@ pt4 = PostTag(posts_id=2, tag_id=3)
 pt5 = PostTag(posts_id=3, tag_id=3)
 
 # Add users and tags to db session and commit
-db.session.add(fred)
-db.session.add(dan)
+db.session.add(nate)
+db.session.add(charles)
 db.session.add(ron)
 db.session.add(t1)
 db.session.add(t2)

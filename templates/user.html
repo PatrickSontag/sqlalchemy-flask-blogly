@@ -27,6 +27,12 @@
     {% endfor %}
 </div>
 <br>
+<div>
+    {% for t in tags %}
+        {{ t }}
+    {% endfor %}
+    
+</div>
 <form id="add-post-form" action="/user/{{ user.id }}/new_post">
     <button class="b-clr-2">Add Post</button>
 </form>

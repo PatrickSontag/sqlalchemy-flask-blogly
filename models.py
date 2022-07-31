@@ -39,8 +39,8 @@ class Post(db.Model):
 
     __tablename__ = "posts"
 
-    # def __repr__(self):
-        # return f<
+    def __repr__(self):
+        return f"<Post id={self.id}, title={self.title}, content={self.content}>"
 
     id = db.Column(db.Integer,
                 primary_key=True,
@@ -60,19 +60,29 @@ class Post(db.Model):
 
     user = db.relationship('User')
     # could also use "backref" to create two-way connection between Models
+    # tags = db.relationship('PostTag', backref='posts')
+    ts = db.relationship('Tag', secondary="posts_tags", backref="posts")
 
 class Tag(db.Model):
     """Tag in a post"""
 
-    __tablename__ = "tags"
+    __tablename__ = 'tags'
+
+    def __repr__(self):
+        return f"<Tag id={self.id}, name={self.name}>"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False, unique=True)
 
+    # posts = db.relationship('PostTag', backref='tags')
+    post = db.relationship('Post', secondary="posts_tags", backref="tags")
+
+
 class PostTag(db.Model):
     """Post and Tag jointable"""
 
-    __tablename__ = "post_tag"
+    __tablename__ = 'posts_tags'
+
 
     posts_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
     tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
@@ -81,11 +91,14 @@ class PostTag(db.Model):
 #   ---------FUNCTIONS----------------  
 
 def user_posts_join_class():
-    """Show employees with a join.
-    """
+    """Show posts with a join."""
 
     posts = (db.session.query(Post, User)
             .join(User).all())
 
     for post, user in posts:  # [(<P>, <U>), (<P>, <U>)]
         print(user.first_name, user.last_name, ":", post.title, "-", post.content)
+
+# def tags_posts_join_class():
+#     """Show tags in each post"""
+
