@@ -17,7 +17,7 @@
         <div class="post-content t-clr-1">{{ post.content }}</div> 
         <div class="tags-container">
             {% for tag in post.ts %}
-            <span class="tag t-clr-2">#{{ tag.name }}</span>
+            <button class="tag small-button t-clr-2">{{ tag.name }}</button>
             {% endfor %}
         </div>
         <!-- <form action>

@@ -148,7 +148,7 @@ button.delete {
 }
 
 button {
-    background-color: rgb(128, 161, 253);
+    /* background-color: rgb(128, 161, 253); */
     border-radius: 4px;
     border: none;
     padding: 6px;
@@ -182,9 +182,21 @@ button {
     position: relative;
 }
 
+.tags-container {
+    position: relative;
+    left: 20px;
+}
+
 .tag {
+    font-family: sans-serif;
     font-style: italic;
-    /* display: inline; */
+    /* box-sizing: border-box; */
+    outline: 1px solid rgb(194, 168, 149);
+    background-color: white;
+    border-radius: 4px;
+    margin-right: 2px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .tag-label {
@@ -205,4 +217,4 @@ h1 {
 main {
     background-color: rgb(255, 255, 255);
     margin-left: 10%;
-}
+4
