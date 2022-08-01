@@ -29,10 +29,25 @@ def handle_user_image(user, default_image='https://icon-library.com/images/defau
 def home_page():
     """Shows home page"""
 
+    # users = []
+    # for user in User.query.all():
+    #     users.append(handle_user_image(user))
+    posts = Post.query.all()
+
+    tags = []
+    for i, p in enumerate(posts):
+        tags.append(posts[i].ts)
+    
+    return render_template('home.html', posts=posts, tags=tags)
+
+@app.route('/users')
+def users():
+    """Shows home page"""
+
     users = []
     for user in User.query.all():
         users.append(handle_user_image(user))
-    return render_template('home.html', users=users)
+    return render_template('users.html', users=users)
 
 @app.route('/', methods=["POST"])
 def add_user():
@@ -146,3 +161,11 @@ def delete_post(post_id):
     db.session.commit()
 
     return redirect(f"/user/{post.user_id}")
+
+@app.route('/edit/post/<int:post_id>')
+def edit_post_form(post_id):
+    """Shows edit post form"""
+    post = Post.query.get_or_404(post_id)
+    user = User.query.get_or_404(post.user_id)
+    tags = Tag.query.all()
+    return render_template('edit_post.html', post=post, user=user, tags=tags)

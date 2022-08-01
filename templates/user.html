@@ -5,7 +5,7 @@
 {% block content %}
 
 <img class="profile-img" src="{{ user.image }}">
-<div class="header-1 t-clr-2">{{ user.first_name }} {{ user.last_name }}</div>
+<div class="header-1 t-clr-1">{{ user.first_name }} {{ user.last_name }}</div>
 <form class="user-buttons">
     <button class="b-clr-2" formaction="/edit/{{ user.id }}">Edit</button>
     <button class="delete" formaction="/delete/{{ user.id }}" formmethod="post">Delete</button>
@@ -15,7 +15,7 @@
 <br>
 <div class="user-posts">
     {% for post in posts %}
-    <div class="post-container">
+    <div class="user-post-container">
         <div class="post-title t-clr-1">{{ post.title }}</div>
         <div class="post-date t-clr-2">{{ post.created_at }}</div>
         <div class="post-content t-clr-1">{{ post.content }}</div> 
@@ -24,8 +24,9 @@
             <span class="tag t-clr-2">#{{ tag.name }}</span>
             {% endfor %}
         </div>
-        <form action>
-            <button id="post-delete-btn" class="delete" formaction="/delete/post/{{ post.id }}" formmethod="post">X</button>
+        <form>
+            <button id="post-edit-btn" class="small-button b-clr-2" formaction="/edit/post/{{ post.id }}" formmethod="get">Edit</button>
+            <button id="post-delete-btn" class="delete small-button" formaction="/delete/post/{{ post.id }}" formmethod="post">X</button>
         </form>
     </div>
     <br>
@@ -34,7 +35,7 @@
 <br>
 
 <form id="add-post-form" action="/user/{{ user.id }}/new_post">
-    <button class="b-clr-2">Add Post</button>
+    <button class="b-clr-1">Add Post</button>
 </form>
 
 {% endblock %}

@@ -64,6 +64,16 @@
     height: 100px;
 }
 
+#post-first-line > * {
+    display: inline;
+}
+
+.post-user-name {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .user-buttons {
     margin-top: 20px;
 }
@@ -80,7 +90,7 @@
     width: 50px;
     object-fit: cover;
     border-radius: 50%;
-    position: absolute;
+    position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -107,17 +117,25 @@
 }
 
 .nav-link {
-    /* float: left; */
-    color: rgb(255, 255, 255);
+    float: left;
+    /* color: rgb(255, 255, 255); */
     text-align: center;
     padding-left: 20px;
+    padding-top: 15px;
     text-decoration: none;
     font-size: 20px;
     font-family: sans-serif;
     font-weight: bold;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    /* display: inline-block;
+    vertical-align: middle; */
+
+    /* position: absolute; */
+    /* top: 50%;
+    transform: translateY(-50%); */
+}
+
+.nav-title {
+    color: white;
 }
 
 body {
@@ -142,15 +160,26 @@ button {
 
 .post-container {
     position: relative;
+    left: 60px;
+    /* height: 30px; */
+    bottom: 80px;
+}
+.user-post-container {
+    position: relative;
+    /* left: 60px; */
+    /* height: 30px; */
+    /* bottom: 80px; */
 }
 
-#post-delete-btn {
+
+.small-button {
     padding: 1px;
     padding-left: 12px;
     padding-right: 12px;
-    /* position: absolute;
-    left: 300px;
-    top: 10px; */
+}
+
+.all-posts {
+    position: relative;
 }
 
 .tag {

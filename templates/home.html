@@ -3,17 +3,28 @@
 {% block title %}Blogly{% endblock %}
 
 {% block content %}
-<div class="header-1 t-clr-2">Users</div>
-
-<div class="users-container">
-    {% for user in users %}
-    <div class="home-container">
-        <img class="home-img" src="{{ user.image }}">
-        <a class="home-name t-clr-1" href="/user/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
+<div class="header-1 t-clr-2">Posts</div>
+<br><br>
+<div class="all-posts">
+    {% for post in posts %}
+    <img class="home-img" src="{{ post.user.image }}">
+    <div class="post-container">
+        <div id="post-first-line">
+            <div class="post-user-name t-clr-1">{{ post.user.first_name }} {{ post.user.last_name }}</div>
+            <div class="post-title t-clr-2">{{ post.title }}</div>
+        </div>
+        <div class="post-date t-clr-2">{{ post.created_at }}</div>
+        <div class="post-content t-clr-1">{{ post.content }}</div> 
+        <div class="tags-container">
+            {% for tag in post.ts %}
+            <span class="tag t-clr-2">#{{ tag.name }}</span>
+            {% endfor %}
+        </div>
+        <!-- <form action>
+            <button id="post-delete-btn" class="delete" formaction="/delete/post/{{ post.id }}" formmethod="post">X</button>
+        </form> -->
     </div>
     {% endfor %}
 </div>
-<form action="/add">
-    <button action="/add" class="b-clr-2">Add</button>
-</form>
+
 {% endblock %}
