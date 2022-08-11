@@ -36,7 +36,7 @@ def home_page():
 
     tags = []
     for i, p in enumerate(posts):
-        tags.append(posts[i].ts)
+        tags.append(posts[i].tags)
     
     return render_template('home.html', posts=posts, tags=tags)
 
@@ -72,7 +72,7 @@ def show_user(user_id):
     print("POSTS:::::::", posts)
     tags = []
     for i, p in enumerate(posts):
-        tags.append(posts[i].ts)
+        tags.append(posts[i].tags)
     # tags = user.tags
     # tags = posts.tags
     # print("TAGS::::::::", tags)
@@ -116,8 +116,12 @@ def update_user(user_id):
 def delete_user(user_id):
     """Delete user"""
 
-    User.query.filter_by(id=user_id).delete()
+    # User.query.filter_by(id=user_id).delete()
 
+    # db.session.commit()
+
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
     db.session.commit()
 
     return redirect('/')
@@ -155,7 +159,7 @@ def new_post(user_id):
 def delete_post(post_id):
     """Delete post"""
 
-    post = Post.query.get_or_404(post_id)
+    post = Post.query.get_or_(post_id)
 
     db.session.delete(post)
     db.session.commit()

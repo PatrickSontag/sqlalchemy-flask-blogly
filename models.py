@@ -32,7 +32,7 @@ class User(db.Model):
                     nullable=False,
                     unique=False)
 
-    posts = db.relationship('Post')
+    posts = db.relationship('Post', backref="user", cascade="all, delete-orphan")
 
 class Post(db.Model):
     """Post"""
@@ -58,10 +58,19 @@ class Post(db.Model):
                 db.ForeignKey('users.id'),
                 nullable=False)
 
-    user = db.relationship('User')
+    # user = db.relationship('User')
     # could also use "backref" to create two-way connection between Models
     # tags = db.relationship('PostTag', backref='posts')
-    ts = db.relationship('Tag', secondary="posts_tags", backref="posts")
+    # tags = db.relationship('Tag', secondary="posts_tags", backref="posts")
+
+class PostTag(db.Model):
+    """Post and Tag jointable"""
+
+    __tablename__ = 'posts_tags'
+
+
+    posts_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
 
 class Tag(db.Model):
     """Tag in a post"""
@@ -75,17 +84,7 @@ class Tag(db.Model):
     name = db.Column(db.Text, nullable=False, unique=True)
 
     # posts = db.relationship('PostTag', backref='tags')
-    post = db.relationship('Post', secondary="posts_tags", backref="tags")
-
-
-class PostTag(db.Model):
-    """Post and Tag jointable"""
-
-    __tablename__ = 'posts_tags'
-
-
-    posts_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
-    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+    posts = db.relationship('Post', secondary="posts_tags", cascade="all", backref="tags")
 
 
 #   ---------FUNCTIONS----------------  

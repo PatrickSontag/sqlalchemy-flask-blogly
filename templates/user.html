@@ -20,7 +20,7 @@
         <div class="post-date t-clr-2">{{ post.created_at }}</div>
         <div class="post-content t-clr-1">{{ post.content }}</div> 
         <div class="tags-container">
-            {% for tag in post.ts %}
+            {% for tag in post.tags %}
             <button class="tag small-button t-clr-2">{{ tag.name }}</button>
             {% endfor %}
         </div>
